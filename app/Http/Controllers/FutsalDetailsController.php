@@ -26,6 +26,12 @@ class FutsalDetailsController extends Controller
         return view('admin.futsal.futsaldetails', compact('data'));
     }
 
+    public function futsaldetails($id)
+    {
+        $data=$this->FutsalDetails->where('id',$id)->get();
+        return view('frontend.futsaldetails', compact('data'));
+    }
+
     /**
      * Show the form for creating a new resource.
      */

@@ -65,6 +65,7 @@ Route::post('/futsaluserlogin', [FutsaluserController::class, 'futsaluserlogin']
 
 Route::get('/contactus', [ContactUsController::class, 'index'])->name('contactus');
 Route::get('/futsals', [FutsalController::class, 'index'])->name('futsals');
+Route::get('/futsals/{id}', [FutsalDetailsController::class, 'futsaldetails'])->name('showfutsaldetails');
 Route::get('/aboutus', [AboutUs::class, 'index'])->name('aboutus');
 
 Route::post('/addUserData', [AdminUserController::class, 'userregister']);
