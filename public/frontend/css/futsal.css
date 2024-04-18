@@ -1,0 +1,72 @@
+.search-form input {
+  width: 400px;
+  height: 40px;
+  padding: 0px 78px 0 30px;
+  border: none;
+  background: #f6f6f6;
+  border-radius: 5px;
+  display: inline-block;
+  margin-right: 10px;
+  font-weight:400;
+  font-size:14px;
+}
+
+ .search-form input:hover{
+  padding-left:35px;
+}
+.search-form .btn {
+  
+  border-radius: 5px;
+  cursor: pointer;
+
+  display: inline-block;
+  position: relative;
+  padding: 10px 13px;
+}
+.search-form .btn i{
+  font-size:16px;
+}
+.search-form{
+  text-align: center;
+}
+.nice-select {
+    
+    background-color: #52DB89;
+    color: #000;
+    border: solid 1px #52DB89;
+    line-height: 42px;
+    
+}
+.current{
+  color:#fff;
+}
+.nice-select .option:hover {
+    background-color: #52DB89;
+    color: #000;
+}
+.search-bar{
+  margin-top: 21px;
+}
+.left-image img{
+
+    width: 310px !important;
+    float: right;
+    border-radius: 7%;
+}
+.price p{
+  color: #52DB89;
+
+}
+/*star start*/
+.checked {
+    color:orange;}
+    /*startend*/
+  .button .btn {
+    color: #fff;
+    margin-top: 9px;
+  }
+
+  .futsal-post{
+    border-bottom: 1.2px solid #757575;
+  }
+
