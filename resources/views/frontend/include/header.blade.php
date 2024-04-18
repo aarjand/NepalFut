@@ -16,39 +16,7 @@
     <!-- Favicon -->
     <link rel="icon" href="{{asset('frontend/img/logo1.png')}}">
 
-    <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
-        rel="stylesheet">
-  
-
-   <!-- Google font-->
-   <link href="https://fonts.googleapis.com/css?family=Ubuntu:400,500,700" rel="stylesheet">
-
-   <!-- themify -->
-   <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/icon/themify-icons/themify-icons.css')}}">
-
-   <!-- iconfont -->
-   <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/icon/icofont/css/icofont.css')}}">
-
-   <!-- simple line icon -->
-   <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/icon/simple-line-icons/css/simple-line-icons.css')}}">
-
-   <!-- Required Fremwork -->
-   <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/plugins/bootstrap/css/bootstrap.min.css')}}">
-
-   <!-- Chartlist chart css -->
-   <link rel="stylesheet" href="{{asset('admin/assets/plugins/chartist/dist/chartist.css')}}" type="text/css" media="all">
-
-   <!-- Weather css -->
-   <link href="{{asset('admin/assets/css/svg-weather.css')}}" rel="stylesheet">
-
-
-   <!-- Style.css -->
-   <!-- <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/main.css')}}"> -->
-
-   <!-- Responsive.css-->
-   <link rel="stylesheet" type="text/css" href="{{asset('admin/assets/css/responsive.css')}}">
+    
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="{{asset('frontend/css/bootstrap.min.css')}}">
@@ -77,12 +45,7 @@
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-    <script type="text/javascript">const myModal = document.getElementById('myModal')
-const myInput = document.getElementById('myInput')
-
-myModal.addEventListener('shown.bs.modal', () => {
-  myInput.focus()
-})</script>
+   
 </head>
 
 <body>

@@ -28,8 +28,8 @@ class FutsalDetailsController extends Controller
 
     public function futsaldetails($id)
     {
-        $data=$this->FutsalDetails->where('id',$id)->get();
-        return view('frontend.futsaldetails', compact('data'));
+        $futsal = $this->FutsalDetails->findOrFail($id);
+    return view('frontend.futsaldetail', compact('futsal'));
     }
 
     /**
