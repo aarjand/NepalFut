@@ -15,9 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('image');
+            $table->string('pan_vat_docs');
             $table->string('location');
             $table->unsignedTinyInteger('ratings')->nullable();
             $table->decimal('price_per_hour', 8, 2);
+            $table->date('available_date');
+            $table->json('time_slots')->nullable();
             $table->enum('status',['Active','Inactive'])->default('Active');
             $table->timestamps();
         });

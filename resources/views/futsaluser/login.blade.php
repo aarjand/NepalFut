@@ -20,8 +20,9 @@
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="md-input-wrapper">
-                                    <label for='email'>Email</label>
+                                    
                                     <input id="email" type="email" class="md-form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    <label for='email'>Email</label>
                                     @error('email')
                             <span class="invalid-feedback" role="alert">
                              <strong style="color:red;">{{ $message }}</strong>
@@ -35,17 +36,25 @@
                                     <label for="password">Password</label>
                          
 
-                                            <!-- @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror -->
+                    
                                     </div>
                                 </div>
                                 
                                 
                                 
                             </div>
+
+                            <div class="col-md-12">
+                                <div class="md-input-wrapper">
+                                <label for="remember">Remember Me</label>
+                               
+                                    <input id="remember" type="checkbox" name="remember">
+                                    <br><br>
+                                    
+                                   
+                                </div>
+                            </div>
+
                             <div class="row">
                                 <div class="col-xs-10 offset-xs-1">
                                     <button type="submit" class="btn btn-primary">LOGIN</button>

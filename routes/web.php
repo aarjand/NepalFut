@@ -84,6 +84,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/update/{id}', [FutsalDetailsController::class, 'update']);
     Route::delete('/delete/{id}', [FutsaluserController::class, 'futsaldelete']);
     Route::delete('/deletefutsaldetails/{id}', [FutsalDetailsController::class, 'destroy']);
+    Route::get('/get-time-slots', [FutsalDetailsController::class, 'getTimeSlots'])->name('get.time.slots');
+
 
 
 });

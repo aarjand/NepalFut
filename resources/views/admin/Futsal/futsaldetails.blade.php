@@ -26,8 +26,11 @@
                                     <th style="width: 10px">S.N.</th>
                                     <th>Futsal Name</th>
                                     <th>Futsal Image</th>
+                                    <th>Pan/VAT Docs</th>
                                     <th>Address</th>
                                     <th>Price</th>
+                                    <th>Available Date</th>
+                                    <th>Available Timeslots</th>
                                     <th>Ratings</th>
                                     <th style="width: 50px">Status</th>
                                     <th style="width: 250px">Action</th>
@@ -40,13 +43,20 @@
                                             <td>{{$Futsals->id}}</td>
                                             <td>{{$Futsals->name}}</td>
                                             <td>
-                                                {{-- {{ $product->image }} --}}
+                                               
                                                 <img src="storeimg/{{$Futsals->image}}"
-                                                    alt="" class="img img-responsive" width="200px" height="200px"/>
+                                                    alt="" class="img img-responsive img-fluid"/>
                                             </td>
-                                        
+                                            <td>
+                                               
+                                                <img src="pan_vatimg/{{$Futsals->pan_vat_docs}}"
+                                                    alt="" class="img img-responsive img-fluid"/>
+                                            </td>
+                                            
                                             <td>{{$Futsals->location}}</td>
                                             <td>{{$Futsals->price_per_hour}}</td>
+                                            <td>{{$Futsals->available_date}}</td>
+                                            <td>{{$Futsals->time_slots}}</td>
                                             <td>{{$Futsals->ratings}} </td>
                                             <td>{{$Futsals->status}} </td>
 

@@ -11,7 +11,6 @@
        
         <div class="container-fluid">
             <div class="row">
-    
                 <div class="col-sm-12">
                     <div class="login-card card-block">
                         <form  action="{{ url('/userLogin') }}" method="POST" class="md-float-material">
@@ -24,6 +23,7 @@
                                 <div class="col-md-12">
                                     <div class="md-input-wrapper">
                                     <label for='email'>Email</label>
+                                    <br><br>
                                     <input id="email" type="email" class="md-form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                     @error('email')
                             <span class="invalid-feedback" role="alert">
@@ -34,23 +34,32 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="md-input-wrapper">
-                                        <input id="password" type="password" class="md-form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                     <label for="password">Password</label>
+                                    <br><br>
+                                        <input id="password" type="password" class="md-form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                    
+
                                     @error('password')
     <span class="invalid-feedback" role="alert" >
         <strong>{{ $message }}</strong>
     </span>
 @enderror
 
-
-                                            <!-- @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror -->
+                        
                                     </div>
                                 </div>
                                 
+                                <div class="col-md-12">
+                                <div class="md-input-wrapper">
+                                <label for="remember">Remember Me</label>
+                               
+                                    <input id="remember" type="checkbox" name="remember">
+                                    <br><br>
+                                    
+                                   
+                                </div>
+                            </div>
+
                                 
                                 
                             </div>
@@ -72,11 +81,10 @@
                     
                 </div>
 
-                <div class='col-sm-6'>
-                </div>
+                
                 
                
-            </div>
+            </div> <!--row-->
             
         </div>
         <!-- end of container-fluid -->

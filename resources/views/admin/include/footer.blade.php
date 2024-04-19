@@ -38,6 +38,34 @@
    <script type="text/javascript" src="{{asset('admin/assets/pages/elements.js')}}"></script>
    <script src="{{asset('admin/assets/js/menu.min.js')}}"></script>
 
+   <script  type="text/javascript">
+    function getTimeSlots() {
+        var selectedDate = document.getElementById('date').value;
+        fetchTimeSlots(selectedDate);
+    }
+
+    function fetchTimeSlots(date) {
+        fetch('/get-time-slots?date=' + date)
+            .then(response => response.json())
+            .then(data => {
+                var timeSlotsSelect = document.getElementById('time_slots');
+                timeSlotsSelect.innerHTML = '';
+                if (data.length > 0) {
+                    data.forEach(slot => {
+                        var option = document.createElement('option');
+                        option.text = slot;
+                        timeSlotsSelect.add(option);
+                    });
+                } else {
+                    var option = document.createElement('option');
+                    option.text = 'No available time slots';
+                    timeSlotsSelect.add(option);
+                }
+            });
+    }
+</script>
+
+
 
 </body>
 

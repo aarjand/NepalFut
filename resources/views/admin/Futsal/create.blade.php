@@ -32,6 +32,17 @@
     </div>
 
     <div class="form-group">
+        <label>Futsal Docs</label>
+        <input type="file" name="pan_vat_docs" class="form-control">
+        @error('pan_vat_docs')
+        <span class="text-danger" role="alert">
+        <i>{{ $message }}</i>
+        </span>
+        @enderror
+    </div>
+
+
+    <div class="form-group">
         <label>Location</label>
         <input type="text" name="location" class="form-control"
         value="{{old('location')}}">
@@ -63,6 +74,32 @@
         </span>
         @enderror
     </div>
+    <div class="form-group">
+    <label for="date">Select Date</label>
+    <input type="date" id="date" name="date" class="form-control" onchange="getTimeSlots()">
+</div>
+
+<div class="form-group">
+    <label for="time_slots">Available Time Slots</label>
+    <select name="time_slots" id="time_slots" class="form-control">
+        <!-- Time slots will be dynamically populated based on the selected date -->
+    </select>
+</div>
+
+@error('date')
+    <span class="text-danger" role="alert">
+        <i>{{ $message }}</i>
+    </span>
+@enderror
+
+@error('time_slots')
+    <span class="text-danger" role="alert">
+        <i>{{ $message }}</i>
+    </span>
+@enderror
+
+
+
 
     <div class="form-group">
         <label>Status</label>

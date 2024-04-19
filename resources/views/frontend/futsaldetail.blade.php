@@ -33,6 +33,31 @@
         <img src="{{ asset('frontend/img/accomodations.png') }}" class="w-100" style="max-width: 400px; max-height: 200px;" alt="">
                 </div>
         </div>
+
+ 
+
+
+<!-- test -->
+
+        <div class="row">
+            
+            <div class="col-md-6">
+                <div class="card mb-3">
+                    
+                    <div class="card-body">
+                      
+                        <p class="card-text"><strong>Rating:</strong> {{ $futsal->rating ?? 'N/A' }}</p>
+                       <input type='date' name='available_date'> <strong>Available Date:</strong> {{ $futsal->available_date }}
+                        <p class="card-text"><strong>Time Slots:</strong> {{ is_array($futsal->time_slots) ? implode(', ', $futsal->time_slots) : 'N/A' }}</p>                        <a href="#" class="btn btn-primary">Book Now</a>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+   
+
+<!-- test -->
+
     </div>
 </div>
 

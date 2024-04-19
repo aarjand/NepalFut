@@ -34,7 +34,7 @@ class AdminUserController extends Controller
             $user->email = $request->email;
             
             $user->password = bcrypt($request->password);
-          
+            $user->email_verified_at = now();
             $user->save();
 
             Auth::login($user);
@@ -48,8 +48,9 @@ class AdminUserController extends Controller
    
     if ($request->isMethod('post')) {
         $credentials = $request->only('email', 'password');
+        $remember = $request->has('remember');
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $remember)) {
             return redirect()->route('admin.dashboard');
         }
 

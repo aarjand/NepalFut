@@ -6,7 +6,6 @@ use App\Models\futsaluser;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-
 use Illuminate\Http\Request;
 
 class FutsaluserController extends Controller
@@ -22,7 +21,7 @@ class FutsaluserController extends Controller
 
         $data = $this->futsaluser->get();
 
-        return view('admin.Futsal.userdetails', compact('data'));
+        return view('admin.futsal.userdetails', compact('data'));
 
     }
 
@@ -47,7 +46,7 @@ class FutsaluserController extends Controller
             $futsaluser->address = $request->address;
             $futsaluser->contact = $request->contact;
             $futsaluser->password = bcrypt($request->password);
-
+            $futsaluser->email_verified_at = now();
             $futsaluser->save();
 
             Auth::login($futsaluser);
@@ -65,12 +64,14 @@ class FutsaluserController extends Controller
 
         if ($request->isMethod('post')) {
             $credentials = $request->only('email', 'password');
+            $remember=$request->has('remember');
 
-            if (Auth::attempt($credentials)) {
+            if (Auth::attempt($credentials, $remember)) {
                 return redirect()->route('/userdashboard');
             }
 
             return back()->withErrors(['email' => 'Invalid login credentials.']);
+           
         }
 
         return view('futsaluser.login');
