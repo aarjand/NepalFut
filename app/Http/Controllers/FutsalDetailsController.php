@@ -20,11 +20,20 @@ class FutsalDetailsController extends Controller
     {
         return view('futsaluser.homepage');
     }
-    public function index()
-    {
-        $data=$this->FutsalDetails->get();
-        return view('admin.futsal.futsaldetails', compact('data'));
+    public function index(Request $request)
+{
+    $searchfutsal = $request->input('search', ''); 
+    $futsals = FutsalDetails::query();
+    
+    if ($searchfutsal !== "") {
+        $futsals->where('name', 'LIKE', "%$searchfutsal%");
     }
+    
+    $data = $futsals->get(); // Use $futsals variable instead of $this->FutsalDetails
+       
+    return view('admin.futsal.futsaldetails', compact('data', 'futsals', 'searchfutsal'));
+}
+
 
     public function futsaldetails($id)
     {
@@ -37,6 +46,8 @@ class FutsalDetailsController extends Controller
      */
     public function create()
     {
+
+        
         
         return view('admin.futsal.create');
     }
@@ -103,10 +114,12 @@ class FutsalDetailsController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FutsalDetails $futsalDetails)
+    public function show()
+
     {
-        //
+      
     }
+
 
     /**
      * Show the form for editing the specified resource.

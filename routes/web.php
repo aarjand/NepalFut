@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use App\Http\Controllers\AboutUs;
 use App\Http\Controllers\ContactUsController;

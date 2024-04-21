@@ -11,12 +11,22 @@
                 <div class="card">
                     <div class="card-header">
                         <h3 class="card-title" style="margin-top: 8px; font-weight: bold;">Futsal</h3>
+                        
                         <a href="{{url('/create')}}" class="btn btn-success float-right"
                             style="margin-bottom: 0px"><i class="fa fa-plus" style="font-size: 12px">
                                 Add Futsal
                             </i>
                         </a>
                     </div>
+                   
+                    <form action="{{route('futsaldetails')}}" method='GET' >
+                        <div class="form-group container-fluid">
+                            <input type="search" name="search" class="form-control" aria-describedby="helpId" placeholder="Search by Futsal Name" value="{{$searchfutsal}}">
+                            <button class="btn btn-success ">
+                                Search
+                            </button>
+                        </div>
+                        </form>
 
                     <!-- /.card-header -->
                     <div class="card-body">
@@ -34,7 +44,7 @@
                                     <th>Ratings</th>
                                     <th style="width: 50px">Status</th>
                                     <th style="width: 250px">Action</th>
-                                </tr>
+                                </tr>c
                             </thead>
                             <tbody>
                             
@@ -56,7 +66,17 @@
                                             <td>{{$Futsals->location}}</td>
                                             <td>{{$Futsals->price_per_hour}}</td>
                                             <td>{{$Futsals->available_date}}</td>
-                                            <td>{{$Futsals->time_slots}}</td>
+                                            <td>
+                                                @if(is_array($Futsals->time_slots))
+                                                    <ul>
+                                                        @foreach($Futsals->time_slots as $slot)
+                                                            <li>{{ $slot }}</li>
+                                                        @endforeach
+                                                    </ul>
+                                                @else
+                                                    {{ $Futsals->time_slots }}
+                                                @endif
+                                            </td>
                                             <td>{{$Futsals->ratings}} </td>
                                             <td>{{$Futsals->status}} </td>
 

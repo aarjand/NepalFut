@@ -67,14 +67,15 @@ class FutsaluserController extends Controller
             $remember=$request->has('remember');
 
             if (Auth::attempt($credentials, $remember)) {
-                return redirect()->route('/userdashboard');
+                return redirect()->route('/index');
             }
 
-            return back()->withErrors(['email' => 'Invalid login credentials.']);
+            // return back()->withErrors(['email' => 'Invalid login credentials.']);
+            
            
         }
 
-        return view('futsaluser.login');
+        return view('/homepage');
     }
 
     /**
