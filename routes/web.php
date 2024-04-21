@@ -36,20 +36,11 @@ Route::get('/adminlogout', [AdminUserController::class, 'AdminLogout'])->
 Route::get('/adminregister', function () {
     return view('admin.register');
 });
-///user
-Route::get('/futsaluserlogin', function () {
-    return view('futsaluser.login');
-});
 
 
-Route::get('/futsaluserregister', function () {
-    return view('futsaluser.register');
-});
 
-
-Route::post('/futsaluserregister', [FutsaluserController::class, 'futsaluserregister']);
-Route::post('/futsaluserlogin', [FutsaluserController::class, 'futsaluserlogin']);
-// Route::get('/userdashboard', [FutsaluserController::class, 'dashboard'])->name('futsaluserdashboard');
+Route::post('/futsaluserregister', [FutsaluserController::class, 'futsaluserregister'])->name('futsaluserregister');
+Route::post('/futsaluserlogin', [FutsaluserController::class, 'futsaluserlogin'])->name('futsaluserlogin');
 
 //crud user//
 // Route::middleware(['auth'])->group(function () {
@@ -68,8 +59,8 @@ Route::get('/futsals', [FutsalController::class, 'index'])->name('futsals');
 Route::get('/futsals/{id}', [FutsalDetailsController::class, 'futsaldetails'])->name('showfutsaldetails');
 Route::get('/aboutus', [AboutUs::class, 'index'])->name('aboutus');
 
-Route::post('/addUserData', [AdminUserController::class, 'userregister']);
-Route::post('/userLogin', [AdminuserController::class, 'userlogin']);
+// Route::post('/addUserData', [AdminUserController::class, 'userregister']);
+// Route::post('/userLogin', [AdminuserController::class, 'userlogin']);
 
 
 

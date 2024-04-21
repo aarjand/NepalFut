@@ -19,5 +19,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('auth:sanctum')->get('/futsalusers', function (Request $request) {
-    return $request->user();
+    return $request->futsaluser();
 });

@@ -403,6 +403,26 @@ body{
 	margin-left:0;
 }
 
+/* timeslot  */
+.time-slot-btn {
+	display: inline-block;
+	margin: 5px;
+	padding: 10px 15px;
+	border: 1px solid #ccc;
+	border-radius: 20px;
+	font-weight: bold;
+	cursor: pointer;
+	background-color: #f8f9fa;
+	color: #000;
+	text-align: center;
+	width: 150px; /* Adjust width as needed */
+}
+.time-slot-btn.active {
+	background-color: #28a745;
+	color: #fff;
+}
+/* timeslot  */
+
 
 /* Dropdown Menu */
 /*.header .nav li .dropdown {

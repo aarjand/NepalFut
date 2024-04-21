@@ -35,29 +35,27 @@
         </div>
 
  
-
-
 <!-- test -->
+ {{-- Time Slots Display --}}
+ <div>
+            <strong>Available Dates and Time Slots:</strong>
+            <form action="{{ url('/book-slot') }}" method="post">
+                @csrf
+                <input type="hidden" name="futsal_id" value="{{ $futsal->id }}">
+                <label for="booking_date">Select Date:</label>
+                <input type="date" name="booking_date" id="booking_date" class="form-control" required>
 
-        <div class="row">
-            
-            <div class="col-md-6">
-                <div class="card mb-3">
-                    
-                    <div class="card-body">
-                      
-                        <p class="card-text"><strong>Rating:</strong> {{ $futsal->rating ?? 'N/A' }}</p>
-                       <input type='date' name='available_date'> <strong>Available Date:</strong> {{ $futsal->available_date }}
-                        <p class="card-text"><strong>Time Slots:</strong> {{ is_array($futsal->time_slots) ? implode(', ', $futsal->time_slots) : 'N/A' }}</p>                        <a href="#" class="btn btn-primary">Book Now</a>
-                    </div>
+                <div id="time-slots-container" class="d-flex flex-wrap">
+                    @foreach($futsal->time_slots as $slot)
+                        <button class="btn btn-outline-secondary m-2">{{ $slot }}</button>
+                    @endforeach
                 </div>
-            </div>
-           
+                
+                <button type="submit" class="btn btn-primary mt-2">Book Slot</button>
+            </form>
         </div>
-   
-
+    
 <!-- test -->
-
     </div>
 </div>
 

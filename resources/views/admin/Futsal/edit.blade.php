@@ -69,6 +69,32 @@
     </div>
 
     <div class="form-group">
+                            <label>Available Date</label>
+                            <input type="date" name="available_date" class="form-control" value="{{ old('available_date') }}">
+                            @error('available_date')
+                                <span class="text-danger" role="alert">
+                                    <i>{{ $message }}</i>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label>Time Slots</label>
+                            @for ($hour = 6; $hour < 20; $hour++)
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" name="time_slots[]" value="{{ $hour }}:00-{{ $hour+1 }}:00">
+                                        {{ $hour }}:00 - {{ $hour+1 }}:00
+                                    </label>
+                                </div>
+                            @endfor
+                            @error('time_slots')
+                                <span class="text-danger" role="alert">
+                                    <i>{{ $message }}</i>
+                                </span>
+                            @enderror
+                        </div>
+    <div class="form-group">
         <label>Status</label>
         <select name="status" class="form-control"
         value='{{old('status', $futsal->status)}}'>

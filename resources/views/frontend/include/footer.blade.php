@@ -112,8 +112,35 @@
 <script src="{{('frontend/js/bootstrap.min.js')}}"></script>
 <!-- Main JS -->
 <script src="{{('frontend/js/main.js')}}"></script>
-<script type="text/javascript">const myModal = document.getElementById('myModal')
-const myInput = document.getElementById('myInput')
+
+@isset($futsal)
+<script>
+document.getElementById('booking_date').addEventListener('change', function() {
+    var selectedDate = this.value;
+    var futsalId = {{ optional($futsal)->id ?? 'null' }};
+    // Example request URL, update to your endpoint
+    fetch(`/get-time-slots?futsal_id=${futsalId}&date=${selectedDate}`)
+        .then(response => response.json())
+        .then(data => {
+            var slotsContainer = document.getElementById('time-slots-container');
+            slotsContainer.innerHTML = ''; // Clear previous slots
+            data.forEach(slot => {
+                var button = document.createElement('button');
+                button.className = 'time-slot-btn';
+                button.type = 'button';
+                button.dataset.value = slot;
+                button.textContent = slot;
+                // Event listener for slot selection
+                button.addEventListener('click', function() {
+                    this.classList.toggle('active');
+                    // Add additional logic for slot selection as required
+                });
+                slotsContainer.appendChild(button);
+            });
+        });
+});
+</script>
+@endisset
 
 
 </body>
