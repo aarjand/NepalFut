@@ -40,7 +40,7 @@ class AdminUserController extends Controller
             Auth::login($user);
             return redirect('/adminlogin');
         }
-
+        
         return view('admin.register');
     }
     public function userlogin(Request $request)
@@ -54,7 +54,7 @@ class AdminUserController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        return back()->withErrors(['email' => 'Invalid login credentials.']);
+        // return back()->withErrors(['email' => 'Invalid login credentials.']);
     }
 
     return view('admin.login');

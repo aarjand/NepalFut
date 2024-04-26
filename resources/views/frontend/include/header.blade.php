@@ -53,90 +53,53 @@
 
 
    
-    <ul class="pro-features">
-        <a class="get-pro" href="#">Help?</a>
-        <li class="title">For Futsals</li>
-        <li>Register Futsal and Manager your futsal</li>
-        <li class="title">For User</li>
-        <li>Just Register, Login and Start.</li>
-
-
-        <div class="button">
-            <a href="#" target="_blank" class="btn">Contact Us</a>
-            <a href="#" target="_blank" class="btn">Book Futsal</a>
-        </div>
-    </ul>
-
-    <!-- Header Area -->
-    <header class="header">
-
-        <!-- Header Inner -->
-        <div class="header-inner">
-            <div class="container">
-                <div class="inner">
-                    <div class="row">
-                        <div class="col-lg-3 col-md-3 col-12">
-                            <!-- Start Logo -->
-                            <div class="logo">
-                                <a href="{{'/'}}"><img src="{{'frontend/img/navlogo.png'}}" alt="logo of Nepal Futsal Manager"></a>
-                            </div>
-                            <!-- End Logo -->
-                            <!-- Mobile Nav -->
-                            <div class="mobile-nav"></div>
-                            <!-- End Mobile Nav -->
+   
+<header class="header">
+    <div class="header-inner">
+        <div class="container">
+            <div class="inner">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-12">
+                        <!-- Logo -->
+                        <div class="logo">
+                            <a href="{{ url('/') }}"><img src="{{ asset('frontend/img/navlogo.png') }}" alt="logo"></a>
                         </div>
-                        <div class="col-lg-7 col-md-9 col-12">
-                            <!-- Main Menu -->
-                            <div class="main-menu">
-                                <nav class="navigation">
-                                    <ul class="nav menu">
-                                    <li class="{{Request::path()=='/' ? 'active':''}}"><a href="{{('/')}}">Home</a>
-												
-                                                </li>
-                                                <li class="{{Request::path()=='aboutus' ? 'active':''}}"><a href="{{('/aboutus')}}">About Us </a></li>
-                                                <li class="{{Request::path()=='futsals' ? 'active':''}}"><a href="{{('/futsals')}}">Futsals </a></li>
-                                                <li><a href="{{url('/bookfutsal')}}">Book Futsal</a></li>
-                                                <li  class="{{Request::path()=='contactus' ? 'active':''}}" ><a href="{{('/contactus')}}">Contact Us</a></li>
-
-                                    </ul>
-                                </nav>
-                            </div>
-                            <!--/ End Main Menu -->
+                    </div>
+                    <div class="col-lg-7 col-md-9 col-12">
+                        <!-- Main Menu -->
+                        <div class="main-menu">
+                            <nav class="navigation">
+                                <ul class="nav menu">
+                                    <li class="{{ request()->is('/') ? 'active' : '' }}"><a href="{{ url('/') }}">Home</a></li>
+                                    <li class="{{ request()->is('aboutus') ? 'active' : '' }}"><a href="{{ url('/aboutus') }}">About Us</a></li>
+                                    <li class="{{ request()->is('futsals') ? 'active' : '' }}"><a href="{{ url('/futsals') }}">Futsals</a></li>
+                                    <li><a href="{{ url('/bookfutsal') }}">Book Futsal</a></li>
+                                    <li class="{{ request()->is('contactus') ? 'active' : '' }}"><a href="{{ url('/contactus') }}">Contact Us</a></li>
+                                </ul>
+                            </nav>
                         </div>
-
-                        <div class="col-lg-1 col-6">
+                    </div>
+                    <div class="col-lg-2 col-12">
+                        @if(auth()->check())
+                            <div class="user-info-dropdown">
+                                <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                    
+                                    {{ auth()->user()->name }}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Profile</a></li>
+                                    <li><a href="{{ Route('admin.logout')}}"><i class="icon-logout"></i> Logout</a></li>
+                                </ul>
+                            </div>
+                        @else
                             <div class="get-quote">
-
-                                <li><a href="#" class="btn">Login </a>
-                                    <ul class="dropdown">
-                                        <li><a href="{{"/futsaluserlogin"}}">User</a></li>
-                                        <li><a href="#">Futsal</a></li>
-                                        <li><a href="#">Staff</a></li>
-                                    </ul>
-                                </li>
-
-
+                                <a href="{{ url('/futsaluserlogin') }}" class="btn">Login</a>
+                                <a href="{{ url('/futsaluserregister') }}" class="btn">Register</a>
                             </div>
-
-                        </div>
-                        <div class="col-lg-1 col-6">
-                            <div class="get-quote">
-                                <li><a href="#" class="btn">Register</a>
-                                    <ul class="dropdown">
-                                        <li><a href="#">User</a></li>
-                                        <li><a href="#">Futsal</a></li>
-                                        <li><a href="#">Staff</a></li>
-                                    </ul>
-                                </li>
-
-                            </div>
-
-                        </div>
-
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
-        <!--/ End Header Inner -->
-    </header>
-    <!-- End Header Area -->
+    </div>
+</header>

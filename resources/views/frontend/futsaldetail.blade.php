@@ -11,7 +11,7 @@
           
             <div class="col-md-4">
             <div class="left-image">
-    						<img src="{{$futsal->image}}" class="w-100" alt="...">
+    						<img src="/storeimg/{{$futsal->image}}" class="w-100" alt="...">
 						</div> 
             </div>
             <div class="col-md-8">
@@ -36,22 +36,29 @@
 
  
 <!-- test -->
- {{-- Time Slots Display --}}
- <div>
-            <strong>Available Dates and Time Slots:</strong>
-            <form action="{{ url('/book-slot') }}" method="post">
-                @csrf
-                <input type="hidden" name="futsal_id" value="{{ $futsal->id }}">
-                <label for="booking_date">Select Date:</label>
-                <input type="date" name="booking_date" id="booking_date" class="form-control" required>
-
-                <div id="time-slots-container" class="d-flex flex-wrap">
-                    @foreach($futsal->time_slots as $slot)
-                        <button class="btn btn-outline-secondary m-2">{{ $slot }}</button>
-                    @endforeach
-                </div>
+<div class="container">
+    <form action="#" method="POST">
+        @csrf
+        <input type="hidden" name="futsal_id" value="{{ $futsal->id }}">
+        <!-- Additional inputs for new fields -->
+        <input type="date" name="booking_date" required>
+        
+        <!-- Display timeslots as radio buttons -->
+        @foreach($futsal->time_slots as $slot)
+        <div class="form-check">
+            <input class="form-check-input" type="radio" name="selected_timeslot" id="timeslot{{ $loop->index }}" value="{{ $slot }}">
+            <label class="form-check-label" for="timeslot{{ $loop->index }}">
+                {{ $slot }}
+            </label>
+        </div>
+        @endforeach
+        <button type="submit" class="btn btn-primary">Book</button>
+    </form>
+</div>
+<script>
+    
                 
-                <button type="submit" class="btn btn-primary mt-2">Book Slot</button>
+                <button type="submit" class="btn btn-primary mt-2" id="payment-button">Book Slot</button>
             </form>
         </div>
     

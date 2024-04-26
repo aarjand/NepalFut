@@ -44,7 +44,7 @@
                                     <th>Ratings</th>
                                     <th style="width: 50px">Status</th>
                                     <th style="width: 250px">Action</th>
-                                </tr>c
+                                </tr>
                             </thead>
                             <tbody>
                             

@@ -16,6 +16,8 @@ class FutsaluserController extends Controller
     {
         $this->futsaluser = $futsaluser;
     }
+
+    
     public function index()
     {
 
@@ -24,6 +26,9 @@ class FutsaluserController extends Controller
         return view('admin.futsal.userdetails', compact('data'));
 
     }
+
+
+   
 
     public function futsaluserregister(Request $request)
     {
@@ -50,7 +55,8 @@ class FutsaluserController extends Controller
             $futsaluser->save();
 
             Auth::login($futsaluser);
-            return redirect('/futsaluserlogin');
+           
+            return redirect('/futsaluserlogin')->withSuccess('Successfully registered user');
 
 
 
@@ -61,21 +67,24 @@ class FutsaluserController extends Controller
     }
     public function futsaluserlogin(Request $request)
     {
-
         if ($request->isMethod('post')) {
             $credentials = $request->only('email', 'password');
-            $remember=$request->has('remember');
-
+            $remember = $request->has('remember');
+    
+            // Attempt to authenticate the user with the provided credentials
             if (Auth::attempt($credentials, $remember)) {
-                return redirect()->route('/index');
+                // Redirect the user to the homepage or intended route if available
+                return redirect()->url('home');  // Using named route for better reliability
             }
-
-            // return back()->withErrors(['email' => 'Invalid login credentials.']);
-            
-           
+    
+            // If authentication fails, redirect back with an error message
+            return back()->withErrors(['email' => 'Invalid login credentials.']);
         }
-
-        return view('/homepage');
+    
+        // Show the login form if not a POST request
+        
+        return view('futsaluser.login');
+        
     }
 
     /**
@@ -151,5 +160,13 @@ class FutsaluserController extends Controller
         $futsaluser = futsaluser::where('id', $id)->first();
         $futsaluser->delete();
         return back()->withSuccess('Sucessfully deleted user');
+    }
+
+    public function UserLogout(Request $request):RedirectResponse
+    {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }

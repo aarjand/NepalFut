@@ -6,7 +6,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <div class="login-card card-block bg-white">
-                        <form action="{{ url('/futsaluserregister') }}" method="POST" class="md-float-material" >
+                        <form action="{{ Route('futsaluserregister') }}" method="POST" class="md-float-material" >
                           @csrf
                             <h3 class="text-center txt-primary">Create an account </h3>
                             <div class="row">

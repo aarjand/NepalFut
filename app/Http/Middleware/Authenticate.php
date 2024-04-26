@@ -16,7 +16,6 @@ class Authenticate extends Middleware
 
     }
     
-
     
 
     

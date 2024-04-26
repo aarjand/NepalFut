@@ -36,6 +36,16 @@
     </div>
 
     <div class="form-group">
+        <label>Futsal Docs</label>
+        <input type="file" name="pan_vat_img" class="form-control" value='{{old('pan_vat_img', $futsal->pan_vat_docs)}}'>
+        @error('pan_vat_img')
+        <span class="text-danger" role="alert">
+        <i>{{ $message }}</i>
+        </span>
+        @enderror
+    </div>
+
+    <div class="form-group">
         <label>Location</label>
         <input type="text" name="location" class="form-control"
         value="{{old('location', $futsal->location)}}">

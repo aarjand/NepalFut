@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\FutsalDetails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class FutsalDetailsController extends Controller
 {
@@ -38,11 +39,14 @@ class FutsalDetailsController extends Controller
 
     public function futsaldetails($id)
     {
-        
+        // $numberoffutsal = DB::table('futsal_details')->count($id);
         $futsal = $this->FutsalDetails->findOrFail($id);
         $futsal->time_slots = json_decode($futsal->time_slots, true);
         
+       
+            
     return view('frontend.futsaldetail', compact('futsal'));
+   
 
     }
 // $numberoffutsal=count($id);

@@ -11,7 +11,7 @@
     
                 <div class="col-sm-12">
                     <div class="login-card card-block">
-                        <form  action="{{ url('/futsaluserlogin') }}" method="POST" class="md-float-material">
+                        <form  action="{{ Route('futsaluserlogin') }}" method="POST" class="md-float-material">
                             @csrf
                             
                             <h3 class="text-center txt-primary">
