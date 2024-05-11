@@ -10,9 +10,9 @@ class BookingFutsal extends Model
 {
     use HasFactory;
 
-    protected $table = 'booking_details'; // Ensure this matches the table name in your migration
+    protected $table = 'booking_futsals'; // Ensure this matches the table name in your migration
 
-    protected $fillable = ['user_id', 'futsal_id', 'timeslot', 'status', 'booking_date', 'special_requests'];
+    
 
     public function user()
     {

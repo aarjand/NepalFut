@@ -20,7 +20,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('ratings')->nullable();
             $table->decimal('price_per_hour', 8, 2);
             $table->date('available_date');
-            $table->json('time_slots')->nullable();
+            $table->json('time_slots');
             $table->enum('status',['Active','Inactive'])->default('Active');
             $table->timestamps();
         });

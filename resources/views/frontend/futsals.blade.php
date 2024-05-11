@@ -65,7 +65,7 @@
 					<p>Rs.{{ $Futsals->price_per_hour }}/hr</p>
 				</div>
 
-				<a href="{{route('showfutsaldetails',[$Futsals->id])}}"><button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+				<a href="{{route('showfutsaldetails',[$Futsals->id])}}"><button type="button" class="btn" >
                 Show Details
 				</button></a>
 

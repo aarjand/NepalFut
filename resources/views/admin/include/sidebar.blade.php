@@ -76,9 +76,16 @@
            </li>
 
            <li class="nav-level">--------</li>
-           <li class=" {{Request::path()=='bookingdetails' ? 'active treeview':''}}">
-           <a class="waves-effect waves-dark" href="{{url('/bookingdetails')}}">
+           <li class=" {{Request::path()=='bookingfutsaldetails' ? 'active treeview':''}}">
+           <a class="waves-effect waves-dark" href="{{url('/bookedfutsaldetails')}}">
            <i class="icon-briefcase"></i></i><span> Bookings</span> </a>  
+              
+           </li>
+
+           <li class="nav-level">--------</li>
+           <li class=" {{Request::path()=='getpaymentdetails' ? 'active treeview':''}}">
+           <a class="waves-effect waves-dark" href="{{url('/paymentdetails')}}">
+           <i class="icon-briefcase"></i></i><span> Paymentss</span> </a>  
               
            </li>
 

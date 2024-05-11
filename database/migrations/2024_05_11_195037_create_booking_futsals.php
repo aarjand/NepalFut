@@ -11,16 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('table_booking_details', function (Blueprint $table) {
+        Schema::create('booking_futsals', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->foreignId('futsal_id');
-            $table->foreign('futsal_id')->references('id')->on('futsal_details');
-            $table->foreignId('futsaluser_id');
-            $table->foreign('futsaluser_id')->references('id')->on('futsalusers');
+            $table->foreignId('futsal_id')->references('id')->on('futsal_details');
+            $table->foreignId('futsaluser_id')->references('id')->on('futsalusers');
             $table->date('selected_date');
-            $table->json('selected_timelsots')->nullable();
-            
+            $table->json('selected_timeslots');
         });
     }
 
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('table_booking_details');
+        Schema::dropIfExists('booking_futsals');
     }
 };

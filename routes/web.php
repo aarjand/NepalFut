@@ -8,7 +8,8 @@ use App\Http\Controllers\{
     HomeController,
     AdminUserController,
     BookingFutsalsController,
-    FutsalController
+    FutsalController,
+
 };
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -24,13 +25,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [AdminUserController::class, 'dashboard'])->name('admin.dashboard');
     Route::get('/futsaldetails', [FutsalDetailsController::class, 'index'])->name('futsaldetails');
     Route::get('/userdetails', [FutsaluserController::class, 'index'])->name('userdetails');
-    Route::get('/bookingdetails', [BookingFutsalsController::class, 'book'])->name('bookingdetails');
+    Route::get('/bookedfutsaldetails', [BookingFutsalsController::class, 'bookedfutsal'])->name('bookingfutsaldetails');
     Route::delete('/delete/{id}', [FutsaluserController::class, 'futsaldelete']);
     Route::get('/create', [FutsalDetailsController::class, 'create'])->name('create');
     Route::post('/store', [FutsalDetailsController::class, 'store'])->name('store');
-    Route::get('/edit/{id}', [FutsalDetailsController::class, 'edit'])->name('edit');
+    Route::put('/edit/{id}', [FutsalDetailsController::class, 'edit'])->name('edit');
     Route::put('/update/{id}', [FutsalDetailsController::class, 'update']);
     Route::delete('/deletefutsaldetails/{id}', [FutsalDetailsController::class, 'destroy']);
+    
 
     Route::get('/get-time-slots', [FutsalDetailsController::class, 'getTimeSlots'])->name('get.time.slots');
 });
@@ -44,6 +46,9 @@ Route::get('/futsaluserlogin', function ()
 Route::post('/futsaluserlogin', [FutsaluserController::class, 'futsaluserlogin'])->name('futsaluserlogin');
 Route::post('/futsaluserregister', [FutsaluserController::class, 'futsaluserregister'])->name('futsaluserregister');
 Route::get('/userlogout', [FutsaluserController::class, 'UserLogout'])->name('user.logout');
+Route::post('/bookfutsals', [BookingFutsalsController::class, 'store'])->name('storefutsaldetails');
+Route::get('/bookedfutsals', [BookingFutsalsController::class, 'index'])->name('bookedfutsaldetails');
+// Route::get('/bookfutsaldetails', [BookingFutsalsController::class, 'index'])->name('getbookedfutsaldetails');
 
 
 // Admin login/logout
@@ -60,3 +65,8 @@ Route::post('/userLogin', [AdminUserController::class, 'userlogin']);
 //     Route::get('/userdetails', [FutsaluserController::class, 'index'])->name('userdetails');
 //     Route::delete('/delete/{id}', [FutsaluserController::class, 'futsaldelete']);
 // });
+// Payment
+
+// Route::post('/khalti/payment/verify',[PaymentController::class,'verifyPayment'])->name('khalti.verifyPayment');
+
+// Route::post('/khalti/payment/store',[PaymentController::class,'storePayment'])->name('khalti.storePayment');

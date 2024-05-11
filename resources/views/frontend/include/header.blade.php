@@ -79,25 +79,37 @@
                             </nav>
                         </div>
                     </div>
-                    <div class="col-lg-2 col-12">
-                        @if(auth()->check())
-                            <div class="user-info-dropdown">
-                                <a href="#" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    
-                                    {{ auth()->user()->name }}
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Profile</a></li>
-                                    <li><a href="{{ Route('admin.logout')}}"><i class="icon-logout"></i> Logout</a></li>
-                                </ul>
-                            </div>
-                        @else
-                            <div class="get-quote">
-                                <a href="{{ url('/futsaluserlogin') }}" class="btn">Login</a>
-                                <a href="{{ url('/futsaluserregister') }}" class="btn">Register</a>
+
+                     @if (session()->has('sessionUser'))
+                            <?php
+                            $userId = session('sessionUser');
+                            $user = \DB::table('futsalusers')->select('id', 'name')->where('id', $userId)->first();
+                            ?>
+
+                    @if ($user)  
+                            <div class="col-lg-1 col-6">
+                                <div class="get-quote">
+                                    <li><a href="#" class="btn">{{ $user->name }}</a>  
+                                        <ul class="dropdown">
+                                            <li><a href="{{ Route('bookedfutsaldetails') }}">Booked Futsal</a></li>
+                                            <li><a href="{{ Route('user.logout') }}">Logout</a></li>
+                                        </ul>
+                                    </li>
+                                </div>
                             </div>
                         @endif
-                    </div>
+                    @else
+                        <div class="col-lg-1 col-6">
+                            <div class="get-quote">
+                                <li><a href="{{ Route('futsaluserlogin') }}" class="btn">Login</a></li>
+                            </div>
+                        </div>
+                        <div class="col-lg-1 col-6">
+                            <div class="get-quote">
+                                <li><a href="{{ Route('futsaluserregister') }}" class="btn">Register</a></li>
+                            </div>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

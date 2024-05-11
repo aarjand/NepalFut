@@ -17,24 +17,24 @@
                             <thead>
                                 <tr>
                                     <th style="width: 10px">S.N.</th>
-                                    <th>User Name</th>
-                                    <th>Futsal Booked</th>
-                                    <th>Date</th>
-                                    <th>Timeslots</th>
+                                    <th>User Id</th>
+                                    <th>Futsal Id</th>
+                                    <th>Booked Date</th>
+                                    <th>Booked Timeslots</th>
                                     <th>Payments</th>
                                     <th style="width: 250px">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
                             
-                       
+                                        @foreach($bookings as $booked)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Perish Ghimire</td>
-                                            <td>ABC</td>
-                                            <td>2024-01-24</td>
-                                            <td>6-7</td>
-                                            <td>1450</td>
+                                            <td>{{$booked->id}}</td>
+                                            <td>{{$booked->futsaluser_id}}</td>
+                                            <td>{{$booked->id}}</td>
+                                            <td>{{$booked->selected_date}}</td>
+                                            <td>{{$booked->selected_timeslots}}</td>
+                                            <td>{{$booked->price_per_hour}}</td>
                                             <td>Booked</td>
                                             <td>
                                         
@@ -42,7 +42,7 @@
                                             </td>
                                         </tr>
                                        
-                                        
+                                        @endforeach
                                      
                             </tbody>
                             

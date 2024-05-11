@@ -40,7 +40,7 @@ class FutsalDetailsController extends Controller
     public function futsaldetails($id)
     {
         // $numberoffutsal = DB::table('futsal_details')->count($id);
-        $futsal = $this->FutsalDetails->findOrFail($id);
+        $futsal = FutsalDetails::find($id);
         $futsal->time_slots = json_decode($futsal->time_slots, true);
         
        
@@ -74,7 +74,7 @@ class FutsalDetailsController extends Controller
         'image' => 'required|mimes:jpeg,jpg,png,gif|max:10000',
         'pan_vat_docs' => 'required|mimes:jpeg,jpg,png,gif|max:10000',
         'available_date' => 'required|date',
-        'time_slots' => 'required|array', // Validate as array
+        'time_slots' => 'required|array', 
         'location' => 'required',
         'price_per_hour' => 'required',
         'status' => 'required'

@@ -7,6 +7,13 @@
                 <div class="col-sm-12">
                     <div class="login-card card-block bg-white">
                         <form action="{{ Route('futsaluserregister') }}" method="POST" class="md-float-material" >
+                        @if (Session::has('success'))
+                        <div class="alert alert-success">{{Session::get('success')}}</div>
+                        @endif
+
+                        @if (Session::has('fail'))
+                        <div class="alert alert-danger">{{Session::get('fail')}}</div>
+                        @endif
                           @csrf
                             <h3 class="text-center txt-primary">Create an account </h3>
                             <div class="row">

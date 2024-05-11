@@ -37,32 +37,43 @@
  
 <!-- test -->
 <div class="container">
-    <form action="#" method="POST">
+    <form action="{{Route('storefutsaldetails')}}" method="POST">
+    @if(session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+@endif
+
+@if(session('error'))
+    <div class="alert alert-danger">
+        {{ session('error') }}
+    </div>
+@endif
         @csrf
         <input type="hidden" name="futsal_id" value="{{ $futsal->id }}">
         <!-- Additional inputs for new fields -->
-        <input type="date" name="booking_date" required>
+        <input type="date" name="selected_date" required value="{{$futsal->available_date}}">
         
         <!-- Display timeslots as radio buttons -->
-        @foreach($futsal->time_slots as $slot)
-        <div class="form-check">
-            <input class="form-check-input" type="radio" name="selected_timeslot" id="timeslot{{ $loop->index }}" value="{{ $slot }}">
-            <label class="form-check-label" for="timeslot{{ $loop->index }}">
-                {{ $slot }}
-            </label>
-        </div>
-        @endforeach
+        @foreach($futsal->time_slots as $index => $slot)
+<div class="form-check">
+    <input class="form-check-input" type="radio" name="selected_timeslots" id="timeslot{{ $index }}" value="{{ $slot }}">
+    <label class="form-check-label" for="timeslot{{ $index }}">
+        {{ $slot }}
+    </label>
+</div>
+@endforeach
         <button type="submit" class="btn btn-primary">Book</button>
     </form>
 </div>
 <script>
     
                 
-                <button type="submit" class="btn btn-primary mt-2" id="payment-button">Book Slot</button>
+                
             </form>
         </div>
     
-<!-- test -->
+
     </div>
 </div>
 

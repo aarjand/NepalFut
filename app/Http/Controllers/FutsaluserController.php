@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
+
 class FutsaluserController extends Controller
 {
 
@@ -37,7 +38,7 @@ class FutsaluserController extends Controller
             $request->validate([
                 'fname' => 'required|max:255',
                 'lname' => 'required|max:255',
-                'email' => 'required|email',
+                'email' => 'required|email|unique:users',
                 'password' => 'required|min:6|confirmed',
                 'password_confirmation' => 'required',
                 'address' => 'required|max:255',
@@ -50,14 +51,18 @@ class FutsaluserController extends Controller
             $futsaluser->email = $request->email;
             $futsaluser->address = $request->address;
             $futsaluser->contact = $request->contact;
-            $futsaluser->password = bcrypt($request->password);
+            $futsaluser->password = Hash::make($request->password);
             $futsaluser->email_verified_at = now();
-            $futsaluser->save();
+            $status=$futsaluser->save();
 
-            Auth::login($futsaluser);
+            if($status){
+                return back()->with('success', 'You have registered Successfully. Now start booking futsal');
+            }
+            else{
+                return back()->with('fail','Something wrong');
+            }
            
-            return redirect('/futsaluserlogin')->withSuccess('Successfully registered user');
-
+           
 
 
 
@@ -68,24 +73,24 @@ class FutsaluserController extends Controller
     public function futsaluserlogin(Request $request)
     {
         if ($request->isMethod('post')) {
-            $credentials = $request->only('email', 'password');
-            $remember = $request->has('remember');
-    
-            // Attempt to authenticate the user with the provided credentials
-            if (Auth::attempt($credentials, $remember)) {
-                // Redirect the user to the homepage or intended route if available
-                return redirect()->url('home');  // Using named route for better reliability
+            $user=futsaluser::where('email', $request->email)->first();
+            if (Hash::check($request->password, $user->password)) {
+                $request->session()->put('sessionUser', $user->id);  
+                return redirect('/');
+            } else {
+                return back()->with('fail', 'Password does not match');
             }
-    
-            // If authentication fails, redirect back with an error message
-            return back()->withErrors(['email' => 'Invalid login credentials.']);
+                
+                
+            }
+            // Show the login form if not a POST request
+            return view('futsaluser.login');
+            
         }
     
-        // Show the login form if not a POST request
+       
         
-        return view('futsaluser.login');
         
-    }
 
     /**
      * Show the form for creating a new resource.
@@ -100,6 +105,7 @@ class FutsaluserController extends Controller
      */
     public function store(Request $request)
     {
+
 
 
         // if ($request->isMethod('post')) {
@@ -124,6 +130,7 @@ class FutsaluserController extends Controller
         // }
 
         // return view('/');
+
 
     }
 
@@ -165,7 +172,7 @@ class FutsaluserController extends Controller
     public function UserLogout(Request $request):RedirectResponse
     {
         Auth::guard('web')->logout();
-        $request->session()->invalidate();
+        $request->session()->forget('sessionUser');
         $request->session()->regenerateToken();
         return redirect('/');
     }
